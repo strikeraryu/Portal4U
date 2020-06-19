@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class MuncipalController {
@@ -114,6 +111,15 @@ public class MuncipalController {
             issueList.add(tempItem);
             for(String t : tempTags)System.out.print(t);
         }
+
+        for(int i=0;i<issueList.size();i++){
+            for(int j=i;j<issueList.size();j++){
+                if(issueList.get(j).getPing()>issueList.get(i).getPing()){
+                    Collections.swap(issueList,i,j);
+                }
+            }
+        }
+
 
         model.put("issueList",issueList);
 
